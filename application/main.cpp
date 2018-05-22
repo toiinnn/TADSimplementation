@@ -1,16 +1,37 @@
 #include <iostream>
+#include <string>
+#include <vector>
 #include "pilha.h"
 #include "lista.h"
 
 using std::string;
 using std::cout;
 using std::endl;
+using std::vector;
 
 int main(int argc, char const *argv[])
 {
 
-	Pilha<int> pilha;
-	cout << "Tamanho: " << pilha.size() << endl;
+	string palavra = "ameopoema";
+	Pilha<char> palindromo;
+	for (auto i = palavra.begin(); i != palavra.end(); ++i)
+	{
+		palindromo.push(*i);
+	}
+
+	cout << palindromo << endl;
+
+
+
+
+
+
+
+
+
+
+
+	/*cout << "Tamanho: " << pilha.size() << endl;
 	pilha.push(10);
 	pilha.push(15);
 	pilha.push(20);
@@ -43,6 +64,6 @@ int main(int argc, char const *argv[])
 	cout << lista1 << endl;
 	lista1.RemoveNoFinal();
 	cout << "Tamanho: " << lista1.size() << endl;
-	cout << lista1 << endl;
+	cout << lista1 << endl;*/
 	return 0;
 }
