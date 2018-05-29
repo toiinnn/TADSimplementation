@@ -1,69 +1,49 @@
-#include <iostream>
-#include <string>
-#include <vector>
 #include "pilha.h"
-#include "lista.h"
 
-using std::string;
+using std::cin;
 using std::cout;
 using std::endl;
-using std::vector;
+using std::string;
 
-int main(int argc, char const *argv[])
-{
+int main(){
 
-	string palavra = "ameopoema";
-	Pilha<char> palindromo;
-	for (auto i = palavra.begin(); i != palavra.end(); ++i)
-	{
-		palindromo.push(*i);
+	Pilha<char> palindromo, reverso;
+	string frase;
+	int j, flag=0;
+
+	cout << "Digite a frase ou palavra sem acento: ";
+	getline(cin, frase);
+
+	j=frase.size();
+	for(int i = 0; i<j; i++){
+		if(frase[i] == 32)
+			i++;
+		if(frase[i] >= 65 && frase[i] <=90)
+			frase[i] += 32;
+		if(frase[i] >= 97 && frase[i] <= 122){
+			palindromo.push(frase[i]);
+		}
 	}
 
-	cout << palindromo << endl;
+	for(int i=frase.size()-1; i>=0; i--){
+		if(frase[i] == 32)
+			i--;
+		if(frase[i] < 97)
+			frase[i] += 32;
+		if(frase[i] >= 97 && frase[i] <= 122)
+			reverso.push(frase[i]);
+	}
 
+	for(int i=0; i<palindromo.size()/2; i++){
+		if(reverso.top() != palindromo.top())
+			flag = 1;
+		palindromo.pop();
+		reverso.pop();
+	}
 
-
-
-
-
-
-
-
-
-
-	/*cout << "Tamanho: " << pilha.size() << endl;
-	pilha.push(10);
-	pilha.push(15);
-	pilha.push(20);
-	cout << pilha.top() << endl;
-	pilha.pop();
-	cout << "Tamanho: " << pilha.size() << endl;
-	cout << pilha.top() << endl;
-	pilha.pop();
-	cout << pilha.top() << endl;
-	pilha.pop();
-
-	cout << "Testando a lista..." << endl;
-
-	ListaLigada<int> lista1;
-	cout << "Tamanho: " << lista1.size() << endl;
-	lista1.InsereNoFinal(2);
-	lista1.InsereNoFinal(3);
-	lista1.InsereNoFinal(4);
-	lista1.InsereNaPosicao(0,1);
-	lista1.InsereNoFinal(6);
-	lista1.InsereNaPosicao(4,5);
-	lista1.InsereNoFinal(7);
-	cout << "Tamanho: " << lista1.size() << endl;
-	cout << lista1 << endl;
-	lista1.RemoveNaPosicao(3);
-	cout << "Tamanho: " << lista1.size() << endl;
-	cout << lista1 << endl;
-	lista1.RemoveNoInicio();
-	cout << "Tamanho: " << lista1.size() << endl;
-	cout << lista1 << endl;
-	lista1.RemoveNoFinal();
-	cout << "Tamanho: " << lista1.size() << endl;
-	cout << lista1 << endl;*/
-	return 0;
+	if(flag == 0){
+		cout << "(" << frase << ")" << "É um palindromo." << endl;
+	} else {
+		cout << "(" << frase << ")" << "Não é um palindromo." << endl;
+	}
 }

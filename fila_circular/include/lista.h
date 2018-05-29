@@ -16,7 +16,7 @@ std::ostream& operator<<( std::ostream&, Node<T> const & );
 template <typename T>
 class Node
 {
-private:
+protected:
 	T valor;
 	shared_ptr<Node<T>> proximo;
 public:

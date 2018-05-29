@@ -5,9 +5,9 @@ APPDIR = application
 OBJDIR = build
 
 CC = g++
-CFLAGS = -O2 -Wall -std=c++14 -pedantic -I $(INCLUDEDIR)
+CFLAGS = -O2 -Wall -std=c++11 -pedantic -I $(INCLUDEDIR)
 
-BIN = ${BINDIR}/banco
+BIN = ${BINDIR}/fila_circular
 APP = ${APPDIR}/main.cpp
 
 SRC = $(wildcard $(SRCDIR)/*.cpp)
@@ -19,7 +19,7 @@ $(BIN): $(OBJS) $(APPOBJ)
 
 $(APPOBJ): $(APP)
 	$(CC) -c -o $@ $< $(CFLAGS)
-	
+
 ${OBJDIR}/%.o: $(SRCDIR)/%.cpp
 	$(CC) -c -o $@ $< $(CFLAGS)
 

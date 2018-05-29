@@ -7,7 +7,7 @@ OBJDIR = build
 CC = g++
 CFLAGS = -O2 -Wall -std=c++14 -pedantic -I $(INCLUDEDIR)
 
-BIN = ${BINDIR}/banco
+BIN = ${BINDIR}/palindromo
 APP = ${APPDIR}/main.cpp
 
 SRC = $(wildcard $(SRCDIR)/*.cpp)
